@@ -1,0 +1,78 @@
+{% extends 'commonheader.html'  %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">  
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+</head>
+
+<body class="index-page">
+
+  {% block content %}
+  <main class="main">
+
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">About</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/index">Home</a></li>
+            <li class="current">About</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- About 2 Section -->
+    <section id="about-2" class="about-2 section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-5">
+            <div class="about-img">
+              <img src="https://estuary.dev/static/ad3b2ef916ac24b8b3216f15a5aa1d67/4d776/Benefits_of_Real_Time_Monitoring_db68749246.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <h3 class="pt-0 pt-lg-5">Understanding Real-Time Monitoring Fundamentals</h3>
+
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+
+              <div class="tab-pane fade show active" id="about-2-tab1">
+
+                <p class="fst-italic">Real-time monitoring operates on the principle of zero to low latency data processing. Unlike batch processing systems that analyze data in scheduled intervals, real-time monitoring provides continuously updated information through live data streams. This immediate feedback loop enables organizations to respond to events as they unfold rather than discovering them hours or days later.</p>
+
+<p>The core components of effective real-time monitoring include:</p>
+<ol><li>
+Data Collection: Automated systems continuously gather information from various sources, whether that's server logs, social media platforms, or user interactions. Modern monitoring solutions can simultaneously track multiple data streams, providing comprehensive visibility across all monitored channels.</li><li> 
+Processing and Analysis: Advanced algorithms, often powered by AI and machine learning, analyze incoming data streams to identify patterns, anomalies, and significant events. This processing happens in milliseconds, ensuring that insights remain actionable and relevant.</li><li> 
+Alerting and Notification: When predefined thresholds are met or unusual patterns emerge, the system immediately notifies relevant stakeholders through various channels including email, SMS, or integrated dashboard alerts.</li><li> 
+Visualization and Reporting: Real-time dashboards present complex data in easily digestible formats, enabling quick decision-making and trend identification. </li>
+</ol>
+              </div><!-- End Tab 1 Content -->
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About 2 Section -->
+
+  </main>
+{% endblock %}
+
+</body>
+
+</html>

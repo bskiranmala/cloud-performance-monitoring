@@ -1,0 +1,196 @@
+{% extends 'userheader.html' %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+</head>
+
+<body>
+
+  {% block content %}
+  <style type="text/css">
+		table, tr, td, th{
+		border:1px solid black;
+		border-collapse:collapse;
+		text-align:center;
+		font-size:18px;
+		}
+		table{
+		width:100%;
+		}
+		th,td{
+		height:50px;
+		}
+	</style>
+
+    <script src="../static/assets/js/canvasjs.min.js"></script>    
+
+  <main class="main">
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Get System Details</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/getsystemdetailsfromipaddress">Home</a></li>
+            <li class="current">Get System Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- About 2 Section -->
+    <section id="about-2" class="about-2 section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-5">
+            <div class="">
+              <form action="/getsystemdetailsfromipaddress" method="post" data-aos="fade-up" data-aos-delay="200">
+                <div class="row gy-4">
+
+                  <div class="col-md-8">
+                    {{msg}}
+                  </div>
+
+                  <div class="col-md-8">
+                    <input type="text" name="ipaddress" class="form-control" placeholder="Enter IP Address" required=""
+                      style="width:300px;">
+                  </div>
+
+                  <div class="col-md-8">
+                    <br>
+                    <button type="submit">Fetch Details</button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+          {% if data %}
+
+          <script>
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+      exportEnabled: true,
+      animationEnabled: true,
+      title: {
+        text: "Free/Used Memory"
+      },
+      data: [{
+        type: "pie",
+        legendText: "{label}",
+        yValueFormatString: "#,###\"\"",
+        indexLabel: "{label} ({y})",
+        dataPoints: {{ graph_data|safe }}
+      }]
+    });
+    chart.render();
+  }
+</script>
+
+          <div class="col-lg-12">
+            <!-- Tab Content -->
+            <div class="tab-content">
+
+              <div class="tab-pane fade show active" id="about-2-tab1">
+                <h2>System Details</h2>
+                <p>
+                <table>
+                  <tr>
+                    <th>id</th>
+                    <td>{{data.id}}</td>
+                    <th>ipaddress</th>
+                    <td>{{data.ipaddress}}</td>
+                    <th>Node Name</th>
+                    <td>{{data.NodeName}}</td>
+                  </tr>
+                  <tr> 
+                    <th>Available Memory</th>
+                    <td>{{data.AvailableMemory}}</td>                  
+                    <th>Total Memory</th>
+                    <td>{{data.TotalMemory}}</td>
+                    <th>Used Memory</th>
+                    <td>{{data.UsedMemory}}</td>                  
+                  </tr>
+                  <tr>
+                    <th>Memory Usage Percentage</th>
+                    <td>{{data.MemoryUsagePercentage}}</td>                    
+                    <th>Disk Usage Percentage</th>
+                    <td>{{data.DiskUsagePercentage}}</td>                    
+                    <th>CPU Usage</th>
+                    <td>{{data.CPU_Usage}}</td>
+                  </tr>
+                  <tr>
+                    <th>Free Disk Space</th>
+                    <td>{{data.FreeDiskSpace}}</td>
+                    <th>Total Disk Space</th>
+                    <td>{{data.TotalDiskSpace}}</td>
+                    <th>Used Disk Space</th>
+                    <td>{{data.UsedDiskSpace}}</td>
+                  </tr>
+                  <tr>
+                    <th>Bytes Sent</th>
+                    <td>{{data.BytesSent}}</td>
+                    <th>Bytes Received</th>
+                    <td>{{data.BytesReceived}}</td>
+                    <th>Number of CPU Cores Physical</th>
+                    <td>{{data.NumberofCPUCoresPhysical}}</td>
+                  </tr>
+                  <tr>
+                    <th>Number of CPU Cores Logical</th>
+                    <td>{{data.NumberofCPUCoresLogical}}</td>                  
+                    <th>Boot Time</th>
+                    <td>{{data.BootTime}}</td>
+                    <th>System</th>
+                    <td>{{data.System}}</td>
+                  </tr>
+                  <tr>
+                    <th>Release</th>
+                    <td>{{data.Release}}</td> 
+                    <th>Version</th>
+                    <td>{{data.Version}}</td>
+                    <th>Machine</th>
+                    <td>{{data.Machine}}</td>
+                  </tr>
+                  <tr>
+                    <th>Processor</th>
+                    <td colspan="7">{{data.Processor}}</td>
+                  </tr>
+                  <tr>
+                    <th>Sub Process</th>
+                    <td colspan="7">{{data.SubProcess}}</td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">Captured Image</th>
+                    <td colspan="6">
+                      <img src="{{data.imageurl}}" width="800px" height="400px" />
+                    </td>
+                  </tr>
+                </table>
+                </p>
+
+              </div><!-- End Tab 1 Content -->
+
+              <div id="chartContainer" style="width: 100%; height: 360px;"></div>
+
+            </div>
+
+          </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </section><!-- /About 2 Section -->
+
+  </main>
+  {% endblock %}
+</body>
+
+</html>

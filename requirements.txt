@@ -1,0 +1,14 @@
+wmi
+psutil
+pysnmp
+snmpclitools
+pysnmplib
+networkx
+matplotlib
+screeninfo
+flask
+firebase-admin
+requests
+pyautogui
+cloudinary
+twilio
